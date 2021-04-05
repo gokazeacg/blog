@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="404, NIU BIO Electronic Engineering 龜龜 henry-yo 機械控制與整合 生機人 不斜槓人生">
+    <meta name="keywords" content="分類: 影音處理, NIU BIO Electronic Engineering 龜龜 henry-yo 機械控制與整合 生機人 不斜槓人生">
     <meta name="description" content="宜蘭大學 | 生物機電工程學系 | 機械控制與整合">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>404 | 不務正業的生機人</title>
+    <title>分類: 影音處理 | 不務正業的生機人</title>
     <link rel="icon" type="image/png" href="https://drive.google.com/uc?export=view&id=1_Mic8JQYdHQLfHBdNpOiMU1c4xDKxUsk">
 
     <link rel="stylesheet" type="text/css" href="/blog/libs/awesome/css/all.css">
@@ -224,34 +224,133 @@
 
 </header>
 
-    <style type="text/css">
-    /* don't remove. */
-    .about-cover {
-        height: 75vh;
-    }
-</style>
-
-<div class="bg-cover pd-header about-cover">
+    <div class="bg-cover pd-header about-cover">
     <div class="container">
-        <div class="row">
-            <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
-                <div class="brand">
-                    <div class="title center-align">
-                        404
-                    </div>
-                    <div class="description center-align">
-                        Oops～，找不到你想要的頁面 :(
-                    </div>
-                </div>
+    <div class="row">
+    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
+        <div class="brand">
+            <div class="title center-align">
+                
+                不斜槓人生
+                
+            </div>
+
+            <div class="description center-align">
+                
+                <span id="subtitle"></span>
+                <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+                <script>
+                    var typed = new Typed("#subtitle", {
+                        strings: ['從來沒有真正的絕境, 只有心靈的迷途','Never really desperate, only the lost of the soul'],
+                        startDelay: 300,
+                        typeSpeed: 100,
+                        loop: true,
+                        backSpeed: 50,
+                        showCursor: true
+                    });
+                </script>
+                
             </div>
         </div>
     </div>
 </div>
 
+
 <script>
     // 每天切换 banner 图.  Switch banner image every day.
-    $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');
+    var bannerUrl = "/blog/medias/banner/" + new Date().getDay() + '.jpg';
+    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
 </script>
+
+
+    </div>
+</div>
+
+<main class="content">
+
+    
+
+<div id="category-cloud" class="container chip-container">
+    <div class="card">
+        <div class="card-content">
+            <div class="tag-title center-align">
+                <i class="fas fa-bookmark"></i>&nbsp;&nbsp;文章分類
+            </div>
+            <div class="tag-chips">
+                
+                
+                
+                <a href="/blog/categories/%E5%BD%B1%E9%9F%B3%E8%99%95%E7%90%86/" title="影音處理: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-active "
+                            style="background-color: #F9EBEA;">影音處理
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    
+
+    <article id="articles" class="container articles">
+        <div class="row tags-posts">
+            
+            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/blog/2021/04/05/%E9%97%9C%E6%96%BCFFMPEG/">
+                        <div class="card-image tag-image">
+                            
+                            <img src="https://docs.google.com/uc?export=download&id=19rNlTq5DEVK1plgBplBeW6Q64XJfGT9l" class="responsive-img" alt="關於FFMPEG">
+                            
+                            <span class="card-title">關於FFMPEG</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                關於FFMPEG注意!本文所使用的環境為Windows10，MacOS以及Linus用戶可以參考，但並不保證運行成功這篇文章是為了記錄研究FFMPEG當中得出的一些心得，而誕生的，其實主要也是為了自己將來如果還要用到的話，有個地方可以看。不
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-05
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/blog/categories/%E5%BD%B1%E9%9F%B3%E8%99%95%E7%90%86/" class="post-category">
+                                    影音處理
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/blog/tags/FFMPEG/">
+                            <span class="chip bg-color">FFMPEG</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </article>
+</main>
+
+
+
 
     <footer class="page-footer bg-color">
     
