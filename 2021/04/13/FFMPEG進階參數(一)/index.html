@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>關於FFMPEG | 不務正業的生機人</title>
+    <title>FFMPEG進階參數(一) | 不務正業的生機人</title>
     <link rel="icon" type="image/png" href="https://drive.google.com/uc?export=view&id=1_Mic8JQYdHQLfHBdNpOiMU1c4xDKxUsk">
 
     <link rel="stylesheet" type="text/css" href="/blog/libs/awesome/css/all.css">
@@ -246,7 +246,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">關於FFMPEG</h1>
+                    <h1 class="description center-align post-title">FFMPEG進階參數(一)</h1>
                 </div>
             </div>
         </div>
@@ -387,7 +387,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>發佈日期:&nbsp;&nbsp;
-                    2021-04-05
+                    2021-04-13
                 </div>
                 
 
@@ -401,7 +401,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字數:&nbsp;&nbsp;
-                    1.5k
+                    1.8k
                 </div>
                 
 
@@ -421,89 +421,48 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>注意!本文所使用的環境為Windows10，MacOS以及Linus用戶可以參考，但並不保證運行成功<br>這篇文章是為了記錄研究FFMPEG當中得出的一些心得，而誕生的，其實主要也是為了自己將來如果還要用到的話，有個地方可以看。<br>不過我自己本身也沒怎麼系統的學習過，只是為了將想要的功能實現而到處去查文獻，也因此走了很多彎路，碰了很多壁，希望這篇文章能夠幫到一些人，當然，如果文章裡面的用法有誤，或者是用詞有所偏差，也歡迎各位不吝賜教。<br>安裝FFMPEG的教學網路上一抓一大把，而且都十分詳盡，主要就是到FFMPEG的 <a target="_blank" rel="noopener" href="https://ffmpeg.org/">官網</a> 上將壓縮檔 <a target="_blank" rel="noopener" href="https://www.gyan.dev/ffmpeg/builds/ffmpeg-git-essentials.7z">下載</a> (Windows)下來解壓縮，然後在解壓縮出來的資料夾底下找到\BIN\FFMPEG.EXE，在資料夾中執行命令提示字元(CMD)就行了。</p>
-<h2 id="基本參數"><a href="#基本參數" class="headerlink" title="基本參數"></a>基本參數</h2><p>第一部分要說的便是基本參數了，也就是輸入、格式選擇以及輸出。</p>
-<h3 id="輸入"><a href="#輸入" class="headerlink" title="輸入"></a>輸入</h3><p>輸入，也就是將想被FFMPEG處理的檔案送進FFMPEG，我們可以將FFMPEG想像成一部機器，輸入就是把將被處裡的物品送進這部機器的手續<br>具體指令為</p>
-<pre class="line-numbers language-CMD" data-language="CMD"><code class="language-CMD">C:\Users\UserName&gt;ffmpeg -i "PUTIN"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <p>注意!本文所使用的環境為Windows10，MacOS以及Linus用戶可以參考，但並不保證運行成功<br>在上一篇文章當中已經介紹了輸入、輸出、格式的用法，對單純想轉檔人來說這三個就已經能應付了，但如果對轉檔出來的品質、體積、速度不滿意那又該怎麼辦呢? 這時候就需要其他參數了  </p>
+<h2 id="調整畫質與檔案體積"><a href="#調整畫質與檔案體積" class="headerlink" title="調整畫質與檔案體積"></a>調整畫質與檔案體積</h2><p>之所以把畫質與體積放在同一個部分來說，是因為在相同編碼條件底下，畫質與體積是正相關的。也就是說畫質越高，影片體積往往不可避免的也會相對增加。而如何調整畫質與體積直至可接受的範圍，就是這個小節裡面所要說明的事情了。  </p>
+<h3 id="Preset-預設值"><a href="#Preset-預設值" class="headerlink" title="Preset 預設值"></a>Preset 預設值</h3><p>preset其實簡單來說就是個懶人包，把不同的選項先調整好集結起來方便快速使用。可以選用的選項有  </p>
+<p>*veryslow<br>*slower<br>*slow<br>*medium - 預設值<br>*fast<br>*faster<br>*veryfast<br>*superfast<br>*ultrafast</p>
+<p>越上方的選項轉檔速度越慢，畫質越好，越下方的速度越快，相對的畫質也就不堪入目了<br>針對速度方面的測試FFMPEG官方有做測試，結果如下圖<br><img src="https://trac.ffmpeg.org/raw-attachment/wiki/Encode/H.264/encoding_time.png" alt="alt 属性文本"><br>想知道每個選項的關聯性的話<a target="_blank" rel="noopener" href="https://magiclen.org/x264-preset/">這篇文章</a>有詳細的測試結果</p>
+<pre class="line-numbers language-CMD" data-language="CMD"><code class="language-CMD">C:\Users\UserName&gt;ffmpeg -i "INPUT" -preset "選項" "OUTPUT"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h3 id="選擇封裝容器"><a href="#選擇封裝容器" class="headerlink" title="選擇封裝容器"></a>選擇封裝容器</h3><p>所謂的封裝容器其實也就是普遍上大家所說的格式，選擇封裝容器也就是你希望FFMPEG產出的格式是甚麼，具體來說，如果是影片檔的話封裝就會有諸如MP4、MKV、WebP、MOV等等，詳細的列表可以輸入下列指令查看</p>
-<pre class="line-numbers language-CMD" data-language="CMD"><code class="language-CMD">C:\Users\UserName&gt;ffmpeg -formats<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="編碼格式"><a href="#編碼格式" class="headerlink" title="編碼格式"></a>編碼格式</h3><p>編碼格式決定了要用甚麼容器裝載，例如容器為MP4，編碼通常會是H.264，當然也有可能會是H.265或是VP9，但不會出現VP8編碼，但也有甚麼都能裝的容器，例如MKV，連字幕都能裝下去。所以在編碼的時候要先確定編碼格式與容器格式能夠相容，不然就會出現轉檔失敗與下列警告</p>
+<pre class="line-numbers language-CMD" data-language="CMD"><code class="language-CMD">[mp4 @ 000002566bd300c0] Could not find tag for codec vp8 in stream #0, codec not currently supported in container
+Could not write header for output file #0 (incorrect codec parameters ?): Invalid argument
+Error initializing output stream 0:0 --<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<p>決定想要輸出的格式之後，就可以輸入-f參數，讓FFMPEG明白你想要甚麼格式啦<br>具體指令為</p>
-<pre class="line-numbers language-CMD" data-language="CMD"><code class="language-CMD">C:\Users\UserName&gt;ffmpeg -f "FORMAT"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>編碼方式也決定了一部分的影片體積，例如H.265(HEVC)就號稱能比H.264節省一半的空間。這就是先進編碼方式的厲害之處了，不過高壓縮率也意味著對效能的要求，不論是在編碼或是解碼的時候通常都會對硬體帶來更大的負擔，而且編碼格式也需要考慮泛用性，並非所有機器都能支援較為先進的編碼格式，所以筆者依然是使用H.264做為主要輸出格式。<br>FFMPEG當中所支持的編碼格式能用以下指令查看</p>
+<pre class="line-numbers language-CMD" data-language="CMD"><code class="language-CMD">C:\Users\UserName&gt;ffmpeg -codecs<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h3 id="輸出"><a href="#輸出" class="headerlink" title="輸出"></a>輸出</h3><p>最後一步就是輸出啦!輸出，顧名思義就是告訴FFMPEG你想要讓它把處理好的檔案放在哪裡，結合上面所說的兩個指令，就是一條完整的FFMPEG指令啦!<br>舉個例子，如果我想要將”D:\Users\Videos\HEHEHE.MKV”轉檔成MP4並輸出至D槽根目錄的HAHAHA.MP4，那我的指令就會像下方那樣</p>
-<pre class="line-numbers language-CMD" data-language="CMD"><code class="language-CMD">C:\Users\UserName&gt;ffmpeg -i "D:\Users\Videos\HEHEHE.MKV" -f MP4 "D:\HAHAHA.MP4"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>使用指令則分為音頻與視頻<br>音頻為</p>
+<pre class="line-numbers language-CMD" data-language="CMD"><code class="language-CMD">C:\Users\UserName&gt;ffmpeg -acodec "編碼格式"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>實際轉檔</p>
-<pre class="line-numbers language-CMD" data-language="CMD"><code class="language-CMD">C:\Users\a6172&gt;ffmpeg -i "D:\Users\a6172\Videos\HEHEHE.mkv" -f MP4 "D:\HAHAHA.MP4"
-ffmpeg version 2021-03-28-git-8b2bde0494-essentials_build-www.gyan.dev Copyright (c) 2000-2021 the FFmpeg developers
-  built with gcc 10.2.0 (Rev6, Built by MSYS2 project)
-  configuration: --enable-gpl --enable-version3 --enable-static --disable-w32threads --disable-autodetect --enable-fontconfig --enable-iconv --enable-gnutls --enable-libxml2 --enable-gmp --enable-lzma --enable-zlib --enable-libsrt --enable-libssh --enable-libzmq --enable-avisynth --enable-sdl2 --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxvid --enable-libaom --enable-libopenjpeg --enable-libvpx --enable-libass --enable-libfreetype --enable-libfribidi --enable-libvidstab --enable-libvmaf --enable-libzimg --enable-amf --enable-cuda-llvm --enable-cuvid --enable-ffnvcodec --enable-nvdec --enable-nvenc --enable-d3d11va --enable-dxva2 --enable-libmfx --enable-libgme --enable-libopenmpt --enable-libopencore-amrwb --enable-libmp3lame --enable-libtheora --enable-libvo-amrwbenc --enable-libgsm --enable-libopencore-amrnb --enable-libopus --enable-libspeex --enable-libvorbis --enable-librubberband
-  libavutil      56. 72.100 / 56. 72.100
-  libavcodec     58.135.100 / 58.135.100
-  libavformat    58. 77.100 / 58. 77.100
-  libavdevice    58. 14.100 / 58. 14.100
-  libavfilter     7.111.100 /  7.111.100
-  libswscale      5. 10.100 /  5. 10.100
-  libswresample   3. 10.100 /  3. 10.100
-  libpostproc    55. 10.100 / 55. 10.100
-Input #0, matroska,webm, from 'D:\Users\a6172\Videos\HEHEHE.mkv':
-  Metadata:
-    ENCODER         : Lavf58.29.100
-  Duration: 00:01:37.10, start: 0.000000, bitrate: 10100 kb/s
-  Stream #0:0: Video: h264 (High), yuv420p(tv, bt709, progressive), 1920x1080 [SAR 1:1 DAR 16:9], 60 fps, 60 tbr, 1k tbn, 120 tbc (default)
-    Metadata:
-      DURATION        : 00:01:37.100000000
-  Stream #0:1: Audio: aac (LC), 48000 Hz, stereo, fltp (default)
-    Metadata:
-      title           : Track1
-      DURATION        : 00:01:37.045000000
-Stream mapping:
-  Stream #0:0 -&gt; #0:0 (h264 (native) -&gt; h264 (libx264))
-  Stream #0:1 -&gt; #0:1 (aac (native) -&gt; aac (native))
-Press [q] to stop, [?] for help
-[libx264 @ 0000023d2d8c07c0] using SAR=1/1
-[libx264 @ 0000023d2d8c07c0] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
-[libx264 @ 0000023d2d8c07c0] profile High, level 4.2, 4:2:0, 8-bit
-[libx264 @ 0000023d2d8c07c0] 264 - core 161 r3048 b86ae3c - H.264/MPEG-4 AVC codec - Copyleft 2003-2021 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=6 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
-Output #0, mp4, to 'D:\HAHAHA.MP4':
-  Metadata:
-    encoder         : Lavf58.77.100
-  Stream #0:0: Video: h264 (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1920x1080 [SAR 1:1 DAR 16:9], q=2-31, 60 fps, 15360 tbn (default)
-    Metadata:
-      DURATION        : 00:01:37.100000000
-      encoder         : Lavc58.135.100 libx264
-    Side data:
-      cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: N/A
-  Stream #0:1: Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 128 kb/s (default)
-    Metadata:
-      title           : Track1
-      DURATION        : 00:01:37.045000000
-      encoder         : Lavc58.135.100 aac
-frame= 5826 fps= 25 q=-1.0 Lsize=   42835kB time=00:01:37.05 bitrate=3615.7kbits/s dup=1 drop=0 speed=0.42x
-video:41153kB audio:1533kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.349416%
-[libx264 @ 0000023d2d8c07c0] frame I:26    Avg QP:18.83  size: 56392
-[libx264 @ 0000023d2d8c07c0] frame P:2022  Avg QP:23.33  size: 13392
-[libx264 @ 0000023d2d8c07c0] frame B:3778  Avg QP:26.12  size:  3598
-[libx264 @ 0000023d2d8c07c0] consecutive B-frames:  6.9% 13.6% 18.9% 60.6%
-[libx264 @ 0000023d2d8c07c0] mb I  I16..4: 22.4% 63.9% 13.8%
-[libx264 @ 0000023d2d8c07c0] mb P  I16..4:  6.9% 18.7%  1.4%  P16..4: 15.8%  2.4%  1.0%  0.0%  0.0%    skip:53.7%
-[libx264 @ 0000023d2d8c07c0] mb B  I16..4:  0.6%  0.9%  0.1%  B16..8: 16.2%  1.4%  0.2%  direct: 1.3%  skip:79.5%  L0:43.1% L1:51.2% BI: 5.7%
-[libx264 @ 0000023d2d8c07c0] 8x8 transform intra:68.0% inter:81.5%
-[libx264 @ 0000023d2d8c07c0] coded y,uvDC,uvAC intra: 16.3% 26.5% 3.7% inter: 2.7% 4.1% 0.1%
-[libx264 @ 0000023d2d8c07c0] i16 v,h,dc,p: 34% 40% 10% 17%
-[libx264 @ 0000023d2d8c07c0] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 35% 17% 34%  3%  3%  3%  3%  2%  2%
-[libx264 @ 0000023d2d8c07c0] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 29% 21% 20%  5%  7%  5%  6%  4%  3%
-[libx264 @ 0000023d2d8c07c0] i8c dc,h,v,p: 62% 19% 16%  2%
-[libx264 @ 0000023d2d8c07c0] Weighted P-Frames: Y:4.5% UV:3.6%
-[libx264 @ 0000023d2d8c07c0] ref P L0: 67.1% 11.4% 14.6%  6.7%  0.1%
-[libx264 @ 0000023d2d8c07c0] ref B L0: 87.6% 10.0%  2.5%
-[libx264 @ 0000023d2d8c07c0] ref B L1: 97.5%  2.5%
-[libx264 @ 0000023d2d8c07c0] kb/s:3471.88
-[aac @ 0000023d2d0a2c80] Qavg: 193.943<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>視頻為</p>
+<pre class="line-numbers language-CMD" data-language="CMD"><code class="language-CMD">C:\Users\UserName&gt;ffmpeg -vcodec "編碼格式"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>以上就是最基本的FFMPEG指令，下一篇會寫關於使用INTEL GPU進行硬體加速，也就是利用QSV來使轉檔速度翻倍且降低CPU使用率的教學。</p>
+<p>如果不需要改變音頻或視頻的編碼格式，可以使用copy參數，對編碼進行複製對拷，降低轉檔壓力。不過需要注意的是如果使用copy參數，意謂著不對來源做任何變動，無法進行任何加工，只能改變容器格式。</p>
+<h3 id="速率控制"><a href="#速率控制" class="headerlink" title="速率控制"></a>速率控制</h3><p>選擇好編碼格式之後就是調整速率控制了，也是決定影片體積的主要變數。<br>常見的速率控制有CRF、CBR、VBR等等，各有各的優缺點，需要注意的是一種編碼通常只會支援一兩種速率控制方式。想了解某種編碼器的詳細參數可以輸入以下指令</p>
+<pre class="line-numbers language-CMD" data-language="CMD"><code class="language-CMD">C:\Users\UserName&gt;ffmpeg -h encoder="ENCODER"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="CRF"><a href="#CRF" class="headerlink" title="CRF"></a>CRF</h4><p>CRF的全稱為Constant Rate Factor，恆定速率因子。此方法允許編碼器自動分配位元速率來試著達到<strong>一定輸出品質</strong>。讓每個畫格得到它需要的位元數來保持所需的品質等級。此方法為最推薦的速率控制方法，缺點是如果畫面變動太大時停止畫面會發現畫質較低，不過其實在播放的時候人眼是無法查覺到的。參數範圍為0–51，預設是23，數值越低畫質越好，影片體積也越大，一般來說數值每降低6，體積會加為兩倍。當參數設定為16時為視覺無損 (或接近)，但在技術上來說並不是無損。</p>
+<pre class="line-numbers language-CMD" data-language="CMD"><code class="language-CMD">C:\Users\UserName&gt;ffmpeg -i "INPUT" -crf "參數" "OUTPUT"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="CBR"><a href="#CBR" class="headerlink" title="CBR"></a>CBR</h4><p>CBR的全稱為Constant Bit Rate，恆定位元速率。在這種速率控制下整部影片的位元率都是固定的，假如是10Mb每秒，那不管是靜止不動的畫面，或者是複雜度高的畫面，通通都一視同仁10M每秒，輸出的檔案大小會是目標位元率×影片時長。通常用於低延遲實況直播。<br>FFMPEG裡沒有真正的CBR，只能通過VBR 1-PASS得到接近CBR的結果，但這麼做通常會讓相同體積的影片看起來更糟，所以非常不建議使用以下指令。</p>
+<pre class="line-numbers language-CMD" data-language="CMD"><code class="language-CMD">C:\Users\UserName&gt;ffmpeg -i "INPUT" -b:v "目標位元率" -minrate "目標位元率" -maxrate "目標位元率" -bufsize "目標位元率/每秒幀數" -an -movflags rtphint -bf 0 "OUTPUT"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="VBR"><a href="#VBR" class="headerlink" title="VBR"></a>VBR</h4><p>VBR的全稱為Variable Bit Rate，變動位元速率。需要設置一個目標位元率，編碼器會使影片整體的位元率符合目標位元率，也就是跟CBR一樣。在FFMPEG裡進行VBR控制需要進行兩次編碼，也就是2-PASS，因此轉檔時間也是成倍的增加，如果不是需要把影片壓成固定大小的人可以直接使用CRF方便快速。</p>
+<p>第一次編碼</p>
+<pre class="line-numbers language-CMD" data-language="CMD"><code class="language-CMD">C:\Users\UserName&gt;ffmpeg -i "INPUT" -b:v "目標位元率" -pass 1 -an -y NUL<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>第二次編碼</p>
+<pre class="line-numbers language-CMD" data-language="CMD"><code class="language-CMD">C:\Users\UserName&gt;ffmpeg -i "INPUT" -b:v "目標位元率" -pass 2 "OUTPUT"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>需要注意的是如果有加上其他參數的話，在兩次編碼過程當中都需要加入。</p>
+<h3 id="特殊選項"><a href="#特殊選項" class="headerlink" title="特殊選項"></a>特殊選項</h3><p>FFMPEG有個特別的選項是針對影片種類調整的，那就是<em>tune</em>參數，具體有以下這些種類<br>*film – 用於高質量電影內容，降低區塊效應<br>*animation – 用於動畫，增加更多的參考幀<br>*grain – 需要保留大量的噪點時使用<br>*stillimage – 用於大量的靜止畫面<br>*fastdecode – 通過禁用某些過濾器，可以更快地解碼<br>*zerolatency – 適用於快速編碼和低延遲流(用於零延遲直播)<br>*psnr – 忽略此選項，因為它僅用於編解碼器開發<br>*ssim – 忽略此選項，因為它僅用於編解碼器開發</p>
+<h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>最推薦的方式其實是將想要轉檔的影片先截取一小段下來，然後用不同的參數個別轉檔看看，選擇自己能夠接受的結果就是好結果。<br>我自己最常用的指令是下面這條，因為處理的影片通常都是動畫片，通常能把原盤壓到原本的1/4，轉檔速度是4x，也就是20分鐘的片，5分鐘壓好<br>至於-c:v h264_qsv這條參數則是指使用QSV進行解碼，可以降低CPU負載，有時間的話會跟大家談談GPU加速</p>
+<pre class="line-numbers language-CMD" data-language="CMD"><code class="language-CMD">C:\Users\UserName&gt;ffmpeg -c:v h264_qsv -i "INPUT" -crf 16 -tune animation -acodec copy -vcodec h264 -f mp4 "OUTPUT"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
                 
             </div>
@@ -530,7 +489,7 @@ video:41153kB audio:1533kB subtitle:0kB other streams:0kB global headers:0kB mux
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://gokazeacg.github.io/blog/blog/2021/04/05/%E9%97%9C%E6%96%BCFFMPEG/">http://gokazeacg.github.io/blog/blog/2021/04/05/%E9%97%9C%E6%96%BCFFMPEG/</a>
+                    <a href="http://gokazeacg.github.io/blog/blog/2021/04/13/FFMPEG%E9%80%B2%E9%9A%8E%E5%8F%83%E6%95%B8(%E4%B8%80)/">http://gokazeacg.github.io/blog/blog/2021/04/13/FFMPEG%E9%80%B2%E9%9A%8E%E5%8F%83%E6%95%B8(%E4%B8%80)/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -735,9 +694,9 @@ video:41153kB audio:1533kB subtitle:0kB other streams:0kB global headers:0kB mux
 
 <script type="text/javascript">
     disqus_config = function () {
-        this.page.url = 'http://gokazeacg.github.io/blog/2021/04/05/%E9%97%9C%E6%96%BCFFMPEG/';
-        this.page.identifier = '/blog/2021/04/05/%E9%97%9C%E6%96%BCFFMPEG/';
-        this.page.title = '關於FFMPEG';
+        this.page.url = 'http://gokazeacg.github.io/blog/2021/04/13/FFMPEG%E9%80%B2%E9%9A%8E%E5%8F%83%E6%95%B8(%E4%B8%80)/';
+        this.page.identifier = '/blog/2021/04/13/FFMPEG%E9%80%B2%E9%9A%8E%E5%8F%83%E6%95%B8(%E4%B8%80)/';
+        this.page.title = 'FFMPEG進階參數(一)';
     };
     let disqus_shortname = '';
 
@@ -765,9 +724,10 @@ video:41153kB audio:1533kB subtitle:0kB other streams:0kB global headers:0kB mux
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/blog/2021/04/13/FFMPEG%E9%80%B2%E9%9A%8E%E5%8F%83%E6%95%B8(%E4%B8%80)/">
                     <div class="card-image">
@@ -784,9 +744,9 @@ video:41153kB audio:1533kB subtitle:0kB other streams:0kB global headers:0kB mux
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-13
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-13
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -799,6 +759,7 @@ video:41153kB audio:1533kB subtitle:0kB other streams:0kB global headers:0kB mux
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -814,7 +775,7 @@ video:41153kB audio:1533kB subtitle:0kB other streams:0kB global headers:0kB mux
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
                 <a href="/blog/2021/04/05/%E9%97%9C%E6%96%BCFFMPEG/">
@@ -847,7 +808,6 @@ video:41153kB audio:1533kB subtitle:0kB other streams:0kB global headers:0kB mux
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
