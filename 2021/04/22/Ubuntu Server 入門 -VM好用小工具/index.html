@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="FFMPEG 教學 入門 轉檔">
+    <meta name="keywords" content="Ubuntu Linux Server Sli VM">
     <meta name="description" content="宜蘭大學 | 生物機電工程學系 | 機械控制與整合">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>FFMPEG進階參數(一) | 不務正業的生機人</title>
+    <title>Ubuntu Server 入門 -VM好用小工具 | 不務正業的生機人</title>
     <link rel="icon" type="image/png" href="https://drive.google.com/uc?export=view&id=1_Mic8JQYdHQLfHBdNpOiMU1c4xDKxUsk">
 
     <link rel="stylesheet" type="text/css" href="/blog/libs/awesome/css/all.css">
@@ -246,7 +246,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">FFMPEG進階參數(一)</h1>
+                    <h1 class="description center-align post-title">Ubuntu Server 入門 -VM好用小工具</h1>
                 </div>
             </div>
         </div>
@@ -362,8 +362,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/blog/tags/FFMPEG/">
-                                <span class="chip bg-color">FFMPEG</span>
+                            <a href="/blog/tags/%E5%B0%8F%E5%B7%A5%E5%85%B7/">
+                                <span class="chip bg-color">小工具</span>
                             </a>
                         
                     </div>
@@ -374,8 +374,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/blog/categories/%E5%BD%B1%E9%9F%B3%E8%99%95%E7%90%86/" class="post-category">
-                                影音處理
+                            <a href="/blog/categories/Linux%E4%BD%BF%E7%94%A8/" class="post-category">
+                                Linux使用
                             </a>
                         
                     </div>
@@ -387,21 +387,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>發佈日期:&nbsp;&nbsp;
-                    2021-04-13
+                    2021-04-22
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-04-13
+                    2021-04-22
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字數:&nbsp;&nbsp;
-                    1.8k
+                    2.4k
                 </div>
                 
 
@@ -421,48 +421,133 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>注意!本文所使用的環境為Windows10，MacOS以及Linus用戶可以參考，但並不保證運行成功<br>在上一篇文章當中已經介紹了輸入、輸出、格式的用法，對單純想轉檔人來說這三個就已經能應付了，但如果對轉檔出來的品質、體積、速度不滿意那又該怎麼辦呢? 這時候就需要其他參數了  </p>
-<h2 id="調整畫質與檔案體積"><a href="#調整畫質與檔案體積" class="headerlink" title="調整畫質與檔案體積"></a>調整畫質與檔案體積</h2><p>之所以把畫質與體積放在同一個部分來說，是因為在相同編碼條件底下，畫質與體積是正相關的。也就是說畫質越高，影片體積往往不可避免的也會相對增加。而如何調整畫質與體積直至可接受的範圍，就是這個小節裡面所要說明的事情了。  </p>
-<h3 id="Preset-預設值"><a href="#Preset-預設值" class="headerlink" title="Preset 預設值"></a>Preset 預設值</h3><p>preset其實簡單來說就是個懶人包，把不同的選項先調整好集結起來方便快速使用。可以選用的選項有  </p>
-<p>*veryslow<br>*slower<br>*slow<br>*medium - 預設值<br>*fast<br>*faster<br>*veryfast<br>*superfast<br>*ultrafast</p>
-<p>越上方的選項轉檔速度越慢，畫質越好，越下方的速度越快，相對的畫質也就不堪入目了<br>針對速度方面的測試FFMPEG官方有做測試，結果如下圖<br><img src="https://trac.ffmpeg.org/raw-attachment/wiki/Encode/H.264/encoding_time.png" alt="alt 属性文本"><br>想知道每個選項的關聯性的話<a target="_blank" rel="noopener" href="https://magiclen.org/x264-preset/">這篇文章</a>有詳細的測試結果</p>
-<pre class="line-numbers language-CMD" data-language="CMD"><code class="language-CMD">C:\Users\UserName&gt;ffmpeg -i "INPUT" -preset "選項" "OUTPUT"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <p>使用Ubuntu Server的原因很簡單：因為不需要授權使用費，看到這裡相信一定有讀者覺得用盜版不就可以了？說實話我並非正版魔人，更確切的來說我算是有錢買正版很好，沒錢用盜版也無可厚非的那類。可是<a target="_blank" rel="noopener" href="https://console.cloud.google.com/">GCP</a>(Google Cloud Platform)上的虛擬機授權只有免費的Linux與付費的WinServer，雖然以前只用過圖形化介面的Ubuntu，不過好歹我也算是入門的前端開發者（雖然是菜鳥中的菜鳥），對搞東搞西跟閱讀文檔兩件事已經麻木不仁（？），所以就硬著頭皮開始了Ubuntu CLI探索之旅。</p>
+<h2 id="搞到一台虛擬機"><a href="#搞到一台虛擬機" class="headerlink" title="搞到一台虛擬機"></a>搞到一台虛擬機</h2><p>目前筆者正在使用的平台是Google Cloud Platform ，在網路上查資料時會見到的通常都是他的簡稱GCP，GCP與<a href="aws.amazon.com">AWS</a>、<a href="azure.microsoft.com">Azure</a>並肩雲平台的三大巨頭，三個平台都有其優勢，也都有試用額度，不過GCP有個十分吸引用戶的優惠，那就是每個用戶都可以免費獲得一台虛擬機器，是的你沒看錯就是 <em><strong>FREE!</strong></em> ，雖然有些限制，而且其實也並非拿這台VM做甚麼都不用錢，但還是很香，具體的建立、連線與使用限制會另外寫一篇文章分享。</p>
+<h2 id="環境設置"><a href="#環境設置" class="headerlink" title="環境設置"></a>環境設置</h2><p>一個全新的VM基本上是甚麼事也做不了的，所以當VM建置完成之後首先要做的事情就是安裝好常常會被依賴的基本服務，例如git、npm、go-lang等等。</p>
+<h3 id="APT命令"><a href="#APT命令" class="headerlink" title="APT命令"></a>APT命令</h3><p>在Ubuntu上安裝常用軟體，大多數都是使用apt命令實現的，apt的全名為Advanced Packaging Tools，進階打包工具，會自動在網路上的軟體庫中搜索並安裝你要需要的軟體(如果有的話)<br>PS. 有時候在一些文檔中會出現</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">apt-get<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>這樣的寫法，這個指令現在已經漸漸的被apt給取代，與apt-cache和apt-config一起包含在apt指令當中，Ubuntu也正在大力的推薦使用apt指令而非apt-get指令</p>
+<h4 id="更新軟體的最新資訊及列表"><a href="#更新軟體的最新資訊及列表" class="headerlink" title="更新軟體的最新資訊及列表"></a>更新軟體的最新資訊及列表</h4><p>這個指令會把軟體庫中所有擁有的軟體資訊，包括版本、位置、相依性等下載回來，更新VM所擁有的資訊，還會順帶提醒你有多少軟件有新的版本可以更新。</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo apt update<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>sudo指令指的是「以超級使用者身分執行」，如果在輸入其他指令時顯示權限不足時，也可以試著在指令最前端打上sudo再試試看<br>另外，如果沒有先更新軟體列表，安裝軟體時就有可能會出現下列錯誤</p>
+<pre class="line-numbers language-cshell" data-language="cshell"><code class="language-cshell">g6172506@demo:~$ sudo apt install git-all
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+E: Unable to locate package git-all<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>顯示無法定位軟體包所在位置，這時候除了懷疑軟體庫當中沒有這個軟體之前，應該要先RUN過一遍上述指令喔!</p>
+<h4 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h4><p>安裝指令十分的淺顯直覺</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo apt install PACKAGENAME -y<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>參數-y是指出現確認確認選項時，一律回答yes<br>利用apt指令安裝軟體時，會自動安裝相依性套件，所以甚麼都不用擔心，RUN下去就對了</p>
+<h4 id="升級軟體"><a href="#升級軟體" class="headerlink" title="升級軟體"></a>升級軟體</h4><p>這個指令會把安裝在VM裡的所有軟體升級到「軟體庫所擁有的」最新版，不過通常軟體庫裡的包都不會是作者最新發布的版本，如果想要安裝最新版的話，還是要自行到軟體的Home Page查看喔!</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo apt upgrade<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="查看已安裝軟體"><a href="#查看已安裝軟體" class="headerlink" title="查看已安裝軟體"></a>查看已安裝軟體</h3><p>此命令會列出所有已安裝的軟體(包含相依套件)</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">dpkg --list<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="解除安裝"><a href="#解除安裝" class="headerlink" title="解除安裝"></a>解除安裝</h3><p>此命令會解除安裝指定的軟件與相依套件</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo apt remove PACKAGENAME<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>可以另外加上</p>
+<pre class="line-numbers language-none"><code class="language-none">--purge<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>刪除配置檔案</p>
+<h3 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h3><p>有許多好用的工具都是被託管在Github上面，而如果想要將Github上面的軟體下載下來放在VM裡面執行，可不像是Windows一樣，把.exe或.msi檔仔下來然後一路按下一步就能完成的。<br>在Github裡，大部分的軟體都是未編譯的，也就是用戶需要將原碼全部載下來，然後再將原碼編譯成可執行檔，而「將原碼全部載下來」的這一步，就需要git工具了，當然，git並不是單純用來下載Github庫的工具，這只是他的其中一種使用方式而已，git實際上是一款功能強大的版本控制系統，但對普通用戶來說，能用就好，管那麼多做啥呢!</p>
+<h3 id="安裝-1"><a href="#安裝-1" class="headerlink" title="安裝"></a>安裝</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo apt install git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="解除安裝-1"><a href="#解除安裝-1" class="headerlink" title="解除安裝"></a>解除安裝</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo apt remove git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h3><p>npm 為 Node Package Manager 的縮寫，是安裝JS軟體的前置工具</p>
+<h4 id="安裝-2"><a href="#安裝-2" class="headerlink" title="安裝"></a>安裝</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo apt install npm<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="解除安裝-2"><a href="#解除安裝-2" class="headerlink" title="解除安裝"></a>解除安裝</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo apt remove npm<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="安裝常用工具"><a href="#安裝常用工具" class="headerlink" title="安裝常用工具"></a>安裝常用工具</h2><p>通常在建立一台VM之後，我都會先安裝、配置好以下兩類的軟體，監控與遠端操作</p>
+<h3 id="Netdata"><a href="#Netdata" class="headerlink" title="Netdata"></a>Netdata</h3><p>Netdata是一個開源工具，可以收集VM的實時指標，例如CPU使用率、記憶體占用率、磁碟活動、網路流量等，重點是可以將資料建立成一個網站頁面，透過外界的瀏覽器訪問，十分的方便</p>
+<h4 id="安裝相依性套件"><a href="#安裝相依性套件" class="headerlink" title="安裝相依性套件"></a>安裝相依性套件</h4><p>這些套件是Netdata運作所需要的，而非Netdata本身</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo apt-get install zlib1g-dev uuid-dev \
+    libuv1-dev liblz4-dev libjudy-dev libssl-dev libmnl-dev \
+    gcc make git autoconf autoconf-archive \
+    autogen automake pkg-config curl<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo apt install cmake<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>命令末端的「\」是在告訴終端用戶還有命令沒有輸入，回車(換行)時先別執行指令</p>
+<h4 id="下載"><a href="#下載" class="headerlink" title="下載"></a>下載</h4><p>Netdata儲存在軟體庫當中的版本會與最新版相隔一個版本號，所以選擇從Git上面下載最新版的軟體</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">git clone https://github.com/netdata/netdata.git
+cd netdata<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>這是兩條命令，分別為從Github上複製Netdata的儲存到本地，以及切換目錄到Netdata的意思</p>
+<h4 id="安裝-3"><a href="#安裝-3" class="headerlink" title="安裝"></a>安裝</h4><p>輸入ls查看Netdata目錄裡有些甚麼東西時，會發現有個.sh檔案名為netdata-installer，.sh檔案是可執行檔</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">g6172506@demo:~/netdata$ ls
+BREAKING_CHANGES.md      build_external      libnetdata
+BUILD.md                 claim               mqtt_websockets
+CHANGELOG.md             cli                 netdata-installer.sh
+CMakeLists.txt           collectors          netdata.cppcheck
+Dockerfile               configs.signatures  netdata.spec.in
+Dockerfile.test          configure.ac        package-lock.json
+HISTORICAL_CHANGELOG.md  contrib             package.json
+LICENSE                  coverity-scan.sh    packaging
+Makefile.am              cppcheck.sh         parser
+README.md                daemon              registry
+REDISTRIBUTED.md         database            spawn
+aclk                     diagrams            streaming
+backends                 docs                system
+build                    exporting           tests
+build-artifacts.sh       health              web<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>以超級使用這身分執行netdata-installer</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo ./netdata-installer.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><font color="#FF0000"><strong>注意!</strong></font>這一步會執行數分鐘至十數分鐘不等，請抱持耐心等候<br><img src="https://lh3.googleusercontent.com/ZKPGieywrLDZg5NpFr_7FByzlzOlS5vGdHIX52KMYYdWQ_ovg7CAzAB_Y1A6-lCtZVOZmmpFafsQ0Cs0qpCv5AZ08t2jeHxKeeodd9EVjq74B5CCObg37jAnsMzRxnKY0nl1hUKklQ=w2400" alt="stay cool"><br>看到下列資訊時，恭喜，你已經安裝好了</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">--- We are done! --- 
 
-<h3 id="編碼格式"><a href="#編碼格式" class="headerlink" title="編碼格式"></a>編碼格式</h3><p>編碼格式決定了要用甚麼容器裝載，例如容器為MP4，編碼通常會是H.264，當然也有可能會是H.265或是VP9，但不會出現VP8編碼，但也有甚麼都能裝的容器，例如MKV，連字幕都能裝下去。所以在編碼的時候要先確定編碼格式與容器格式能夠相容，不然就會出現轉檔失敗與下列警告</p>
-<pre class="line-numbers language-CMD" data-language="CMD"><code class="language-CMD">[mp4 @ 000002566bd300c0] Could not find tag for codec vp8 in stream #0, codec not currently supported in container
-Could not write header for output file #0 (incorrect codec parameters ?): Invalid argument
-Error initializing output stream 0:0 --<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+  ^
+  |.-.   .-.   .-.   .-.   .-.   .  netdata                          .-.   .-
+  |   '-'   '-'   '-'   '-'   '-'   is installed and running now!  -'   '-'  
+  +----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+---&gt;
 
-<p>編碼方式也決定了一部分的影片體積，例如H.265(HEVC)就號稱能比H.264節省一半的空間。這就是先進編碼方式的厲害之處了，不過高壓縮率也意味著對效能的要求，不論是在編碼或是解碼的時候通常都會對硬體帶來更大的負擔，而且編碼格式也需要考慮泛用性，並非所有機器都能支援較為先進的編碼格式，所以筆者依然是使用H.264做為主要輸出格式。<br>FFMPEG當中所支持的編碼格式能用以下指令查看</p>
-<pre class="line-numbers language-CMD" data-language="CMD"><code class="language-CMD">C:\Users\UserName&gt;ffmpeg -codecs<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+  enjoy real-time performance and health monitoring...
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>可以到<a target="_blank" rel="noopener" href="http://ip:19999/%E4%BD%BF%E7%94%A8Netdata">http://IP:19999/使用Netdata</a><br><img src="https://lh3.googleusercontent.com/KBnecYbcIsH-sVYrAaMGZgBwANYB7Ie3P2gFibnZwmjS04ABmTI7EDhF_JzW6D4nyPRdg4I_tPrSeT-SZ5KhBPAUMKroU4edXwstDvbFfqn9RdaCuE4kzQ82m_4U9RHEIKq2pmatzA=w2400" alt="Netadata介面"><br>如果網頁無法顯示的話，可能是VM供應商的防火牆擋住了19999port，記得到後台去開啟，如果選項允許Http、Https的話也記得勾選<br><img src="https://lh3.googleusercontent.com/XMnJ9A5kQ_0XACsQEhTVwf1R2-yG-QcgrQlWH1y0-v29wlQdE9uoVSe6t_d2LyhFiv62Ah1OEhdwD_F2c-qRHOckYjryhdbb24nSXGlbLYubO6TiSEdmh9bYrGjAGRuvVddUTeRlWQ=w2400" alt="允許Http、Https"></p>
+<h3 id="Vnstat監控網路使用量"><a href="#Vnstat監控網路使用量" class="headerlink" title="Vnstat監控網路使用量"></a>Vnstat監控網路使用量</h3><p>大多數的VM供應商對於VM的網路活動都是收費的，如果不清楚的了解自己所租借的VM已經使用了多少，很有可能會因此讓荷包大失血，因此我會安裝監控網路使用量的軟體在VM上，而這其中最為直覺且單純的，我認為非屬Vnstat不是了。</p>
+<h4 id="安裝-4"><a href="#安裝-4" class="headerlink" title="安裝"></a>安裝</h4><p>Vnstat收錄在大多數的軟體庫當中，因此只要使用apt指令就能輕鬆地安裝</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo apt install vnstat<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>Vnstat十分的小巧，只有不到100kB，因此安裝也十分迅速，啪!的一下，很快阿。</p>
+<h4 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h4><p>輸入</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">vnstat<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>就會顯示流量資訊了</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">g6172506@demo:$ vnstat
+Database updated: 2021-04-21 16:35:00
 
-<p>使用指令則分為音頻與視頻<br>音頻為</p>
-<pre class="line-numbers language-CMD" data-language="CMD"><code class="language-CMD">C:\Users\UserName&gt;ffmpeg -acodec "編碼格式"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+   ens4 since 2021-04-13
 
-<p>視頻為</p>
-<pre class="line-numbers language-CMD" data-language="CMD"><code class="language-CMD">C:\Users\UserName&gt;ffmpeg -vcodec "編碼格式"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+          rx:  602.26 GiB      tx:  822.27 GiB      total:  1.39 TiB
 
-<p>如果不需要改變音頻或視頻的編碼格式，可以使用copy參數，對編碼進行複製對拷，降低轉檔壓力。不過需要注意的是如果使用copy參數，意謂著不對來源做任何變動，無法進行任何加工，只能改變容器格式。</p>
-<h3 id="速率控制"><a href="#速率控制" class="headerlink" title="速率控制"></a>速率控制</h3><p>選擇好編碼格式之後就是調整速率控制了，也是決定影片體積的主要變數。<br>常見的速率控制有CRF、CBR、VBR等等，各有各的優缺點，需要注意的是一種編碼通常只會支援一兩種速率控制方式。想了解某種編碼器的詳細參數可以輸入以下指令</p>
-<pre class="line-numbers language-CMD" data-language="CMD"><code class="language-CMD">C:\Users\UserName&gt;ffmpeg -h encoder="ENCODER"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+   monthly
+                     rx      |     tx      |    total    |   avg. rate
+     ------------------------+-------------+-------------+---------------
+       2021-04    602.26 GiB |  822.27 GiB |    1.39 TiB |    6.84 Mbit/s
+     ------------------------+-------------+-------------+---------------
+     estimated    873.22 GiB |    1.16 TiB |    2.02 TiB |
 
-<h4 id="CRF"><a href="#CRF" class="headerlink" title="CRF"></a>CRF</h4><p>CRF的全稱為Constant Rate Factor，恆定速率因子。此方法允許編碼器自動分配位元速率來試著達到<strong>一定輸出品質</strong>。讓每個畫格得到它需要的位元數來保持所需的品質等級。此方法為最推薦的速率控制方法，缺點是如果畫面變動太大時停止畫面會發現畫質較低，不過其實在播放的時候人眼是無法查覺到的。參數範圍為0–51，預設是23，數值越低畫質越好，影片體積也越大，一般來說數值每降低6，體積會加為兩倍。當參數設定為16時為視覺無損 (或接近)，但在技術上來說並不是無損。</p>
-<pre class="line-numbers language-CMD" data-language="CMD"><code class="language-CMD">C:\Users\UserName&gt;ffmpeg -i "INPUT" -crf "參數" "OUTPUT"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+   daily
+                     rx      |     tx      |    total    |   avg. rate
+     ------------------------+-------------+-------------+---------------
+     yesterday     13.01 GiB |   59.08 GiB |   72.09 GiB |    7.17 Mbit/s
+         today      6.92 GiB |  454.45 MiB |    7.37 GiB |    1.06 Mbit/s
+     ------------------------+-------------+-------------+---------------
+     estimated     10.02 GiB |  657.70 MiB |   10.66 GiB |<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>安裝完Vnstat之後需要一段時間讓Vnstat收集網路資訊，如果在剛安裝完成時輸入指令的話，會出現</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">g6172506@demo:~/netdata$ vnstat
+ ens4: Not enough data available yet.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>不用擔心，過個一天就好了<br>Vnstat還可以天為單位顯示每日的網路使用量，具體指令如下</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">g6172506@free:/mnt/disks/data$ vnstat -d
 
-<h4 id="CBR"><a href="#CBR" class="headerlink" title="CBR"></a>CBR</h4><p>CBR的全稱為Constant Bit Rate，恆定位元速率。在這種速率控制下整部影片的位元率都是固定的，假如是10Mb每秒，那不管是靜止不動的畫面，或者是複雜度高的畫面，通通都一視同仁10M每秒，輸出的檔案大小會是目標位元率×影片時長。通常用於低延遲實況直播。<br>FFMPEG裡沒有真正的CBR，只能通過VBR 1-PASS得到接近CBR的結果，但這麼做通常會讓相同體積的影片看起來更糟，所以非常不建議使用以下指令。</p>
-<pre class="line-numbers language-CMD" data-language="CMD"><code class="language-CMD">C:\Users\UserName&gt;ffmpeg -i "INPUT" -b:v "目標位元率" -minrate "目標位元率" -maxrate "目標位元率" -bufsize "目標位元率/每秒幀數" -an -movflags rtphint -bf 0 "OUTPUT"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+ ens4  /  daily
 
-<h4 id="VBR"><a href="#VBR" class="headerlink" title="VBR"></a>VBR</h4><p>VBR的全稱為Variable Bit Rate，變動位元速率。需要設置一個目標位元率，編碼器會使影片整體的位元率符合目標位元率，也就是跟CBR一樣。在FFMPEG裡進行VBR控制需要進行兩次編碼，也就是2-PASS，因此轉檔時間也是成倍的增加，如果不是需要把影片壓成固定大小的人可以直接使用CRF方便快速。</p>
-<p>第一次編碼</p>
-<pre class="line-numbers language-CMD" data-language="CMD"><code class="language-CMD">C:\Users\UserName&gt;ffmpeg -i "INPUT" -b:v "目標位元率" -pass 1 -an -y NUL<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>第二次編碼</p>
-<pre class="line-numbers language-CMD" data-language="CMD"><code class="language-CMD">C:\Users\UserName&gt;ffmpeg -i "INPUT" -b:v "目標位元率" -pass 2 "OUTPUT"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>需要注意的是如果有加上其他參數的話，在兩次編碼過程當中都需要加入。</p>
-<h3 id="特殊選項"><a href="#特殊選項" class="headerlink" title="特殊選項"></a>特殊選項</h3><p>FFMPEG有個特別的選項是針對影片種類調整的，那就是<em>tune</em>參數，具體有以下這些種類<br>*film – 用於高質量電影內容，降低區塊效應<br>*animation – 用於動畫，增加更多的參考幀<br>*grain – 需要保留大量的噪點時使用<br>*stillimage – 用於大量的靜止畫面<br>*fastdecode – 通過禁用某些過濾器，可以更快地解碼<br>*zerolatency – 適用於快速編碼和低延遲流(用於零延遲直播)<br>*psnr – 忽略此選項，因為它僅用於編解碼器開發<br>*ssim – 忽略此選項，因為它僅用於編解碼器開發</p>
-<h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>最推薦的方式其實是將想要轉檔的影片先截取一小段下來，然後用不同的參數個別轉檔看看，選擇自己能夠接受的結果就是好結果。<br>我自己最常用的指令是下面這條，因為處理的影片通常都是動畫片，通常能把原盤壓到原本的1/4，轉檔速度是4x，也就是20分鐘的片，5分鐘壓好<br>至於-c:v h264_qsv這條參數則是指使用QSV進行解碼，可以降低CPU負載，有時間的話會跟大家談談GPU加速</p>
-<pre class="line-numbers language-CMD" data-language="CMD"><code class="language-CMD">C:\Users\UserName&gt;ffmpeg -c:v h264_qsv -i "INPUT" -crf 16 -tune animation -acodec copy -vcodec h264 -f mp4 "OUTPUT"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+          day        rx      |     tx      |    total    |   avg. rate
+     ------------------------+-------------+-------------+---------------
+     2021-04-13    84.83 GiB |  275.40 GiB |  360.23 GiB |   35.81 Mbit/s
+     2021-04-14    25.80 GiB |   28.57 GiB |   54.37 GiB |    5.41 Mbit/s
+     2021-04-15   147.09 GiB |  141.19 GiB |  288.29 GiB |   28.66 Mbit/s
+     2021-04-16   241.66 GiB |  231.54 GiB |  473.19 GiB |   47.05 Mbit/s
+     2021-04-17    41.06 GiB |   80.13 GiB |  121.19 GiB |   12.05 Mbit/s
+     2021-04-18   219.33 MiB |    4.15 GiB |    4.37 GiB |  434.02 kbit/s
+     2021-04-19    41.68 GiB |    1.77 GiB |   43.44 GiB |    4.32 Mbit/s
+     2021-04-20    13.01 GiB |   59.08 GiB |   72.09 GiB |    7.17 Mbit/s
+     2021-04-21     6.92 GiB |  457.30 MiB |    7.37 GiB |    1.06 Mbit/s
+     ------------------------+-------------+-------------+---------------
+     estimated      9.97 GiB |  658.51 MiB |   10.61 GiB |<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>如果要以月為單位的話就改成-m就可以了，是不是很方便呢!</p>
+<h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>到這為止VM的初始使用環境就建構好了，在使用Ubuntu Server的過程中還遇到了其他的問題，例如掛載新硬碟、使用Google Drive、遠端下載Torrent等等，就等到下一篇在寫了吧!</p>
 
                 
             </div>
@@ -489,7 +574,7 @@ Error initializing output stream 0:0 --<span aria-hidden="true" class="line-numb
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://gokazeacg.github.io/blog/blog/2021/04/13/FFMPEG%E9%80%B2%E9%9A%8E%E5%8F%83%E6%95%B8(%E4%B8%80)/">http://gokazeacg.github.io/blog/blog/2021/04/13/FFMPEG%E9%80%B2%E9%9A%8E%E5%8F%83%E6%95%B8(%E4%B8%80)/</a>
+                    <a href="http://gokazeacg.github.io/blog/blog/2021/04/22/Ubuntu%20Server%20%E5%85%A5%E9%96%80%20-VM%E5%A5%BD%E7%94%A8%E5%B0%8F%E5%B7%A5%E5%85%B7/">http://gokazeacg.github.io/blog/blog/2021/04/22/Ubuntu%20Server%20%E5%85%A5%E9%96%80%20-VM%E5%A5%BD%E7%94%A8%E5%B0%8F%E5%B7%A5%E5%85%B7/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -527,8 +612,8 @@ Error initializing output stream 0:0 --<span aria-hidden="true" class="line-numb
                     
                         <div class="article-tag">
                             
-                                <a href="/blog/tags/FFMPEG/">
-                                    <span class="chip bg-color">FFMPEG</span>
+                                <a href="/blog/tags/%E5%B0%8F%E5%B7%A5%E5%85%B7/">
+                                    <span class="chip bg-color">小工具</span>
                                 </a>
                             
                         </div>
@@ -694,9 +779,9 @@ Error initializing output stream 0:0 --<span aria-hidden="true" class="line-numb
 
 <script type="text/javascript">
     disqus_config = function () {
-        this.page.url = 'http://gokazeacg.github.io/blog/2021/04/13/FFMPEG%E9%80%B2%E9%9A%8E%E5%8F%83%E6%95%B8(%E4%B8%80)/';
-        this.page.identifier = '/blog/2021/04/13/FFMPEG%E9%80%B2%E9%9A%8E%E5%8F%83%E6%95%B8(%E4%B8%80)/';
-        this.page.title = 'FFMPEG進階參數(一)';
+        this.page.url = 'http://gokazeacg.github.io/blog/2021/04/22/Ubuntu%20Server%20%E5%85%A5%E9%96%80%20-VM%E5%A5%BD%E7%94%A8%E5%B0%8F%E5%B7%A5%E5%85%B7/';
+        this.page.identifier = '/blog/2021/04/22/Ubuntu%20Server%20%E5%85%A5%E9%96%80%20-VM%E5%A5%BD%E7%94%A8%E5%B0%8F%E5%B7%A5%E5%85%B7/';
+        this.page.title = 'Ubuntu Server 入門 -VM好用小工具';
     };
     let disqus_shortname = '';
 
@@ -724,9 +809,10 @@ Error initializing output stream 0:0 --<span aria-hidden="true" class="line-numb
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/blog/2021/04/22/Ubuntu%20Server%20%E5%85%A5%E9%96%80%20-VM%E5%A5%BD%E7%94%A8%E5%B0%8F%E5%B7%A5%E5%85%B7/">
                     <div class="card-image">
@@ -743,9 +829,9 @@ Error initializing output stream 0:0 --<span aria-hidden="true" class="line-numb
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-22
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-22
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -758,6 +844,7 @@ Error initializing output stream 0:0 --<span aria-hidden="true" class="line-numb
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -776,12 +863,12 @@ Error initializing output stream 0:0 --<span aria-hidden="true" class="line-numb
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/blog/2021/04/05/%E9%97%9C%E6%96%BCFFMPEG/">
+                <a href="/blog/2021/04/13/FFMPEG%E9%80%B2%E9%9A%8E%E5%8F%83%E6%95%B8(%E4%B8%80)/">
                     <div class="card-image">
                         
-                        <img src="https://docs.google.com/uc?export=download&id=19rNlTq5DEVK1plgBplBeW6Q64XJfGT9l" class="responsive-img" alt="關於FFMPEG">
+                        <img src="https://docs.google.com/uc?export=download&id=19rNlTq5DEVK1plgBplBeW6Q64XJfGT9l" class="responsive-img" alt="FFMPEG進階參數(一)">
                         
-                        <span class="card-title">關於FFMPEG</span>
+                        <span class="card-title">FFMPEG進階參數(一)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -792,7 +879,7 @@ Error initializing output stream 0:0 --<span aria-hidden="true" class="line-numb
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-13
                             </span>
                         <span class="publish-author">
                             
